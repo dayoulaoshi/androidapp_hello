@@ -12,6 +12,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.baidu.mapapi.map.BaiduMap;
+import com.baidu.mapapi.map.BitmapDescriptor;
+import com.baidu.mapapi.map.BitmapDescriptorFactory;
+import com.baidu.mapapi.map.MyLocationConfiguration;
+import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.model.LatLng;
 
 
@@ -21,7 +25,7 @@ public class Image_Setontouch  {
     private ImageView image;
     private TextView textView_longitude;
     private TextView textView_latitude;
-    private BaiduMap mBaiduMap;
+    public BaiduMap mBaiduMap;
     Image_Setontouch(BaiduMap mBaiduMap,ImageView image,TextView textView_longitude,TextView textView_latitude){
         this.image=image;
         this.mBaiduMap=mBaiduMap;
@@ -78,6 +82,15 @@ public class Image_Setontouch  {
                         textView_latitude.setText(String.valueOf(current_maplocation.latitude));
                         //showdialog();
                         //Toast.makeText(MainActivity.this, "抬起", Toast.LENGTH_SHORT).show();
+
+                        String jing=textView_longitude.getText().toString();
+                        String wei=textView_latitude.getText().toString();
+                        double value_jin = Double.valueOf(jing.toString());
+                        double value_wei = Double.valueOf(wei.toString());
+
+
+
+
                         break;
 
                 }
@@ -85,37 +98,8 @@ public class Image_Setontouch  {
 
             }
             });
-    }
 
-//    public void showdialog(View view)
-//    {
-//    //Toast.makeText(this,"clickme",Toast.LENGTH_LONG).show();
-//    AlertDialog.Builder alertdialogbuilder=new AlertDialog.Builder(this);
-//    alertdialogbuilder.setMessage("您确认要退出程序");
-//    alertdialogbuilder.setPositiveButton("确定", click1);
-//    alertdialogbuilder.setNegativeButton("取消", click2);
-//    AlertDialog alertdialog1=alertdialogbuilder.create();
-//    alertdialog1.show();
-//    }
-
-
-    private DialogInterface.OnClickListener click1=new DialogInterface.OnClickListener()
-    {
-    @Override
-    public void onClick(DialogInterface arg0,int arg1)
-    {
-    android.os.Process.killProcess(android.os.Process.myPid());
-    }
-    };
-    private DialogInterface.OnClickListener click2=new DialogInterface.OnClickListener()
-    {
-    @Override
-    public void onClick(DialogInterface arg0,int arg1)
-    {
-    arg0.cancel();
-    }
-    };
-
+        }
 
 
     }
